@@ -1,0 +1,26 @@
+{
+  "name": "kavi",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000k\u0000a\u0000v\u0000i\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaviyarasan47/kavi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kaviyarasan47/kavi/issues"
+  },
+  "homepage": "https://github.com/Kaviyarasan47/kavi#readme",
+  "dependencies": {
+    "mongodb": "^6.15.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.23.0"
+  }
+}
