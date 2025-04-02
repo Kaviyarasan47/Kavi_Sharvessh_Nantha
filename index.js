@@ -49,7 +49,11 @@ async function main() {
 
         // Insert multiple drivers into MongoDB
         const result = await collection.insertMany(drivers);
-        console.log(`${result.insertedCount} drivers inserted`);
+        console.log(`✅ Inserted ${result.insertedCount} drivers!`);
+
+        // Task 4: Query for drivers with rating ≥ 4.5
+        const highRatedDrivers = await collection.find({ rating: { $gte: 4.5 } }).toArray();
+        console.log("🌟 Drivers with rating ≥ 4.5:", highRatedDrivers);
 
     } catch (err) {
         console.error("Error:", err);
