@@ -50,6 +50,10 @@ async function main() {
         const updatedJohnDoe = await collection.findOne({ name: "John Doe" });
         console.log("🔄 Updated John Doe:", updatedJohnDoe);
 
+        // **Task 6: Delete unavailable drivers using the provided line**
+        const deleteResult = await db.collection('drivers').deleteOne({ isAvailable: false });
+        console.log(`Driver deleted with result: ${deleteResult.deletedCount} driver(s) deleted!`);
+
     } catch (err) {
         console.error("❌ Error:", err);
     } finally {
