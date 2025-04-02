@@ -25,7 +25,7 @@ async function main() {
 
         // Clear existing collection to avoid duplicate entries
         await collection.deleteMany({});
-        
+
         // Insert drivers into MongoDB
         await collection.insertMany(drivers);
         console.log(`🚀 Inserted ${drivers.length} drivers!`);
@@ -50,8 +50,16 @@ async function main() {
         const updatedJohnDoe = await collection.findOne({ name: "John Doe" });
         console.log("🔄 Updated John Doe:", updatedJohnDoe);
 
-        // **Task 6: Delete unavailable drivers using the provided line**
-        const deleteResult = await db.collection('drivers').deleteOne({ isAvailable: false });
+        // **Task 6: Delete unavailable drivers using deleteMany instead of deleteOne**
+        const deleteResult = await db.collection('drivers').deleteMany({ isAvailable: false });
+
+        // Log the delete count and check which drivers were deleted
+        if (deleteResult.deletedCount > 0) {
+            console.log(`🚫 Deleted ${deleteResult.deletedCount} unavailable driver(s)!`);
+        } else {
+            console.log("No unavailable drivers to delete.");
+        }
+
         console.log(`Driver deleted with result: ${deleteResult.deletedCount} driver(s) deleted!`);
 
     } catch (err) {
