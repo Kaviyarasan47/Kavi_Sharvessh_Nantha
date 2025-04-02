@@ -25,8 +25,9 @@ drivers.forEach(driver => {
 
 
 //TODO: add additional driver to the drivers array
+drivers.push({ name: "Emma Brown", rating: 4.6, available: true});
 
-
+console.log("New driver added:", drivers[drivers.length - 1]);
 
 async function main() {
     const uri = "mongodb://localhost:27017";
