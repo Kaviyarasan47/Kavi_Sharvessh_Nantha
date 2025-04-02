@@ -29,24 +29,27 @@ console.log("New driver added:", drivers[drivers.length - 1]);
 
 async function main() {
     // Replace <connection-string> with your MongoDB URI
-    const uri = "mongodb://localhost:27017";
+    const uri = "mongodb://localhost:27018";
     const client = new MongoClient(uri);
+
+    console.time("Connection Time"); // Start timing
 
     try {
         await client.connect();
         console.log("Connected to MongoDB!");
+        console.timeEnd("Connection Time"); // Stop timing and print duration
+        
 
         const db = client.db("testDB");
         const collection = db.collection("drivers");
 
-        // ✅ Insert all drivers into MongoDB
-        const result = await collection.insertMany(drivers);
-        console.log(`✅ Inserted ${result.insertedCount} drivers!`);
-        
-        // **Task 4: Query for drivers with rating ≥ 4.5**
-        const highRatedDrivers = await collection.find({ rating: { $gte: 4.5 } }).toArray();
-        console.log("High Rated Drivers:", highRatedDrivers);
-        
+        // Insert a document
+        await collection.insertOne({ name: "Kaviyarasan", age: 22 });
+        console.log("Document inserted!");
+
+        // Query the document
+        const result = await collection.findOne({ name: "Kaviyarasan" });
+        console.log("Query result:", result);
     } catch (err) {
         console.error("Error:", err);
     } finally {
