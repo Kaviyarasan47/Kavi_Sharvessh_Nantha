@@ -79,4 +79,61 @@ app.delete('/rides/:id', async (req, res) => {
   } catch (err) {
     res.status(400).json({ error: "Internal Server Error" });
   }
+
+});
+
+console.log("Route /users POST is set");
+
+
+// GET /users - Fetch all users
+app.get('/users', async (req, res) => {
+  try {
+    const users = await db.collection('users').find().toArray();
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch users" });
+  }
+});
+
+// POST /users - Create a new user
+app.post('/users', async (req, res) => {
+  try {
+    const result = await db.collection('users').insertOne(req.body);
+    res.status(201).json({ id: result.insertedId });
+  } catch (err) {
+    res.status(400).json({ error: "Invalid user data" });
+  }
+});
+
+// PATCH /users/:id - Update user info
+app.patch('/users/:id', async (req, res) => {
+  try {
+    const result = await db.collection('users').updateOne(
+      { _id: new ObjectId(req.params.id) },
+      { $set: req.body }
+    );
+
+    if (result.modifiedCount === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.status(200).json({ updated: result.modifiedCount });
+  } catch (err) {
+    res.status(400).json({ error: "Invalid user ID or data" });
+  }
+});
+
+// DELETE /users/:id - Delete a user
+app.delete('/users/:id', async (req, res) => {
+  try {
+    const result = await db.collection('users').deleteOne({ _id: new ObjectId(req.params.id) });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.status(200).json({ deleted: result.deletedCount });
+  } catch (err) {
+    res.status(400).json({ error: "Invalid user ID" });
+  }
 });
