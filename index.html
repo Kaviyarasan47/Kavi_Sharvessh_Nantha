@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ride Management Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    section { margin-bottom: 40px; }
+    h2 { color: #2c3e50; }
+    input, button { padding: 5px; margin: 5px 0; }
+    pre { background: #f0f0f0; padding: 10px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+
+  <h1>🚖 Ride Management Dashboard</h1>
+
+  <section>
+    <h2>🔍 All Rides</h2>
+    <button onclick="fetchRides()">Refresh Rides</button>
+    <pre id="ridesOutput">Loading...</pre>
+  </section>
+
+  <section>
+    <h2>➕ Add Ride</h2>
+    <input id="pickup" placeholder="Pickup Location" />
+    <input id="destination" placeholder="Destination" />
+    <input id="driverId" placeholder="Driver ID" />
+    <button onclick="addRide()">Add Ride</button>
+  </section>
+
+  <section>
+    <h2>🛑 Cancel/Delete Ride</h2>
+    <input id="rideId" placeholder="Ride ID" />
+    <button onclick="cancelRide()">Cancel Ride</button>
+    <button onclick="deleteRide()">Delete Ride</button>
+  </section>
+
+  <section>
+    <h2>👤 Users</h2>
+    <button onclick="fetchUsers()">Show All Users</button>
+    <pre id="usersOutput">Loading...</pre>
+  </section>
+
+  <section>
+    <h2>➕ Add User</h2>
+    <input id="userName" placeholder="Name" />
+    <input id="userEmail" placeholder="Email" />
+    <button onclick="addUser()">Add User</button>
+  </section>
+
+  <script>
+    const base = "http://localhost:3000";
+
+    async function fetchRides() {
+      const res = await fetch(`${base}/rides`);
+      const data = await res.json();
+      document.getElementById('ridesOutput').textContent = JSON.stringify(data, null, 2);
+    }
+
+    async function addRide() {
+      const ride = {
+        pickupLocation: document.getElementById('pickup').value,
+        destination: document.getElementById('destination').value,
+        driverId: document.getElementById('driverId').value,
+        status: "requested"
+      };
+      const res = await fetch(`${base}/rides`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(ride)
+      });
+      fetchRides();
+    }
+
+    async function cancelRide() {
+      const id = document.getElementById('rideId').value;
+      await fetch(`${base}/rides/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: "cancelled" })
+      });
+      fetchRides();
+    }
+
+    async function deleteRide() {
+      const id = document.getElementById('rideId').value;
+      await fetch(`${base}/rides/${id}`, { method: "DELETE" });
+      fetchRides();
+    }
+
+    async function fetchUsers() {
+      const res = await fetch(`${base}/users`);
+      const data = await res.json();
+      document.getElementById('usersOutput').textContent = JSON.stringify(data, null, 2);
+    }
+
+    async function addUser() {
+      const user = {
+        name: document.getElementById('userName').value,
+        email: document.getElementById('userEmail').value
+      };
+      await fetch(`${base}/users`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user)
+      });
+      fetchUsers();
+    }
+
+    // Initial load
+    fetchRides();
+    fetchUsers();
+  </script>
+
+</body>
+</html>
