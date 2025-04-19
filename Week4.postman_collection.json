@@ -1,0 +1,341 @@
+{
+	"info": {
+		"_postman_id": "f79dc392-a173-48f4-9e9a-6587295b198f",
+		"name": "Week4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43188892",
+		"_collection_link": "https://kaviyarasansvnantha-8549374.postman.co/workspace/Kaviyarasan's-Workspace~bccb1dca-1cc4-4fff-875f-9ffdf622f24e/collection/43188892-f79dc392-a173-48f4-9e9a-6587295b198f?action=share&source=collection_link&creator=43188892"
+	},
+	"item": [
+		{
+			"name": "Week4",
+			"item": [
+				{
+					"name": "http://localhost:3000/auth/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/drivers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/drivers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"drivers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/rides",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/rides",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rides"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/rides/available",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/rides/available",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rides",
+								"available"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/rides/requests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/rides/requests",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rides",
+								"requests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/rides/{rideId}/accept",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/rides/{rideId}/accept",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rides",
+								"{rideId}",
+								"accept"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/rides/{rideId}/complete",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/rides/{rideId}/complete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rides",
+								"{rideId}",
+								"complete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/rides/{rideId}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/rides/{rideId}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rides",
+								"{rideId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/users/{userId}/rides",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/{userId}/rides",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"{userId}",
+								"rides"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/admin/users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/admin/users/tempId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/users/tempId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"users",
+								"tempId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/admin/users/{userId}\n\n",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/users/{userId}\n\n",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"users",
+								"{userId}\n\n"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/admin/drivers/{driverId}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/drivers/{driverId}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"drivers",
+								"{driverId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/admin/rides/active",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/rides/active",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"rides",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/admin/rides/{rideId}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/rides/{rideId}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"rides",
+								"{rideId}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
