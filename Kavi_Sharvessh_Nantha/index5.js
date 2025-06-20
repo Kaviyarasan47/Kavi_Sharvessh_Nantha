@@ -23,7 +23,9 @@ async function startServer() {
     app.get('/analytics/passengers', async (req, res) => {
       try {
         const result = await rides.aggregate([
-          { $match: { status: 'completed' } },
+          {
+            $match: { status: 'completed' }
+          },
           {
             $group: {
               _id: '$userName',
@@ -40,13 +42,16 @@ async function startServer() {
               totalFare: 1,
               avgDistance: { $round: ['$avgDistance', 2] }
             }
+          },
+          {
+            $sort: { name: 1 }
           }
         ]).toArray();
 
         res.json(result);
       } catch (err) {
-        console.error('Aggregation error:', err);
-        res.status(500).send('Error fetching analytics');
+        console.error(err);
+        res.status(500).send('Internal Server Error');
       }
     });
 
